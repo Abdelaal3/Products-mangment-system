@@ -7,9 +7,6 @@ let total = document.getElementById('total');
 let count = document.getElementById('count');
 let category = document.getElementById('category');
 let btncreat = document.getElementById('btncreat');
-
-
-
 // get total
 function GetTotal(){
     if (price.value != ''){
@@ -23,10 +20,6 @@ function GetTotal(){
 
     }
 }
-
-
-
-
 // create product
 
 let dataPro ;
@@ -35,10 +28,7 @@ if(localStorage.products != null){
 }else{
     dataPro = [];
 }
-
-
 btncreat.onclick = function(){
-
     let newPro= {
         title: title.value,
         price: price.value,
@@ -49,23 +39,15 @@ btncreat.onclick = function(){
         count: count.value,
         category: category.value
     }
-    
     if (newPro.count > 1){
         for (let i = 0; i < newPro.count ; i++){dataPro.push(newPro);}
     } else{dataPro.push(newPro)}
-
     localStorage.setItem('products' , JSON.stringify(dataPro));
-
     clearData();
     ShowData();
-
 }
-
-
 // save localstorage
 // clear inputs
-
-
 function clearData(){
     title.value= '';
     price.value= '';
@@ -77,7 +59,6 @@ function clearData(){
     category.value= '';
 }
 // read
-
 function ShowData(){
     let table = '';
 
@@ -98,41 +79,27 @@ function ShowData(){
         
         `
     }
-
     document.getElementById('tbody').innerHTML=table;
-
 }
 ShowData()
 // count
 // delete 
 function deleteData(i){
-
     dataPro.splice(i,1);
     ShowData()
 }
 // update
 // search 
-
     let searchMood = 'title';
-
     function getSearchMood(id)
     {
         let search= document.getElementById('search');
-
         if (id == 'btn-title'){
              searchMood = 'title';
              search.placeholder='Search By Title';
-
         } else{
              searchMood = 'category';
              search.placeholder='Search By Category';
-
         }
-
         search.focus()
     }
-
-
-
-
-// clean data
